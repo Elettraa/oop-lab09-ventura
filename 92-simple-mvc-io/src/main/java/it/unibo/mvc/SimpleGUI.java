@@ -26,16 +26,16 @@ public final class SimpleGUI {
     private final Controller controller;
     private static final int PROPORTION = 3;
 
-    /*
-     * Builds a new SimpleGUI
+    /**
+     * Builds a new SimpleGUI.
      */
     private SimpleGUI() {
         this.controller = new Controller();
         setUp();
     }
 
-    /*
-     * Sets up the panels
+    /**
+     * Sets up the panels.
      */
     private void setUp() {
         final JPanel canvas = new JPanel();
@@ -46,14 +46,14 @@ public final class SimpleGUI {
         canvas.add(saveButton, BorderLayout.SOUTH);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        /*
-         * Handlers
+        /**
+         * Handlers.
          */
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
                 try {
-                    controller.write(textArea.getText());
+                    controller.write(textArea.getText() + "\n");
                 } catch (IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -61,8 +61,8 @@ public final class SimpleGUI {
         });
     }
 
-    /*
-     * displays on screen the panels
+    /**
+     * Displays on screen the panels.
      */
     private void display() {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

@@ -24,16 +24,16 @@ public final class SimpleGUIWithFileChooser {
     private final Controller controller;
     private static final int PROPORTION = 3;
 
-    /*
-     * Creates a new SimpleGUIWithFileChooser
+    /**
+     * Creates a new SimpleGUIWithFileChooser.
      */
     private SimpleGUIWithFileChooser() {
         this.controller = new Controller();
         setUp();
     }
 
-    /*
-     * Sets Up the SimpleGUI
+    /**
+     * Sets Up the SimpleGUI.
      */
     private void setUp() {
         final JPanel canvas = new JPanel();
@@ -52,8 +52,8 @@ public final class SimpleGUIWithFileChooser {
         innerPanel.add(browseButton, BorderLayout.LINE_END);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        /*
-         * Handlers
+        /**
+         * Handlers.
          */
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -80,10 +80,10 @@ public final class SimpleGUIWithFileChooser {
         });
     }
 
+    /**
+     * Displays on screen the panels.
+     */
     private void display() {
-        /*
-         * displays on screen the panels
-         */
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
