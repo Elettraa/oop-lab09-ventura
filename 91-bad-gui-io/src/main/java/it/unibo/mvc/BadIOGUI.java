@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.List;
+import java.nio.file.Path;
+import static java.lang.System.out;
+//import java.util.List;
 import java.util.Random;
 
 /**
@@ -42,7 +44,12 @@ public class BadIOGUI {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
+        final JButton read = new JButton("Read file");
+        final JPanel newPanel = new JPanel();
+        newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.LINE_AXIS));
+        newPanel.add(write, BorderLayout.CENTER);
+        newPanel.add(read, BorderLayout.CENTER);
+        canvas.add(newPanel, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
@@ -60,11 +67,25 @@ public class BadIOGUI {
                  */
                 try (PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
                     ps.print(randomGenerator.nextInt());
+                } catch (final IOException e1) {
+                    JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
+                    e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                }
+            }
+        });
+
+        read.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                try {
+                    out.println(Files.readAllLines(Path.of(PATH)));
                 } catch (IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
             }
+
         });
     }
 
@@ -90,6 +111,7 @@ public class BadIOGUI {
         /*
          * OK, ready to push the frame onscreen
          */
+        frame.pack();
         frame.setVisible(true);
     }
 
@@ -99,6 +121,6 @@ public class BadIOGUI {
      * @param args ignored
      */
     public static void main(final String... args) {
-       new BadIOGUI().display();
+        new BadIOGUI().display();
     }
 }
