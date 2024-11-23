@@ -7,14 +7,14 @@ import java.util.List;
 
 /**
  * 
- *
+ * SimpleController implementation of Controller interface.
  */
 public final class SimpleController implements Controller {
     private String currentData;
     private final List<String> historyOfPreviousData;
 
     /**
-     * 
+     * Builds a new SimpleController.
      */
     public SimpleController() {
         this.currentData = "";
@@ -43,10 +43,7 @@ public final class SimpleController implements Controller {
         this.currentData = newInput;
     }
 
-    /**
-     * 
-     * @return the list of previous strings saved int the history
-     */
+    @Override
     public List<String> getHistory() {
         return new ArrayList<>(historyOfPreviousData);
     }

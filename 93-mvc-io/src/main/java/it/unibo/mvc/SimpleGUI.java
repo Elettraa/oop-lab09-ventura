@@ -20,7 +20,7 @@ public final class SimpleGUI {
 
     private static final int PROPORTION = 3;
     private final JFrame frame = new JFrame();
-    private final SimpleController controller;
+    private final Controller controller;
 
     /**
      * Builds a new SimpleGUI.
@@ -31,7 +31,7 @@ public final class SimpleGUI {
     }
 
     /**
-     * 
+     * Sets up the panels and their components.
      */
     private void setUp() {
         final JPanel canvas = new JPanel();
@@ -50,7 +50,7 @@ public final class SimpleGUI {
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /**
-         * handlers
+         * handlers.
          */
         printButton.addActionListener(new ActionListener() {
             @Override
@@ -78,7 +78,7 @@ public final class SimpleGUI {
     }
 
     /**
-     * 
+     * Displays the graphics.
      */
     private void display() {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -90,6 +90,7 @@ public final class SimpleGUI {
     }
 
     /**
+     * Launches the application.
      * 
      * @param args
      */
